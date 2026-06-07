@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -572,8 +573,7 @@
     Pynapse is an open-source project documenting the real-world build of an algorithmic crypto trading system — from strategy research to live execution.
   </p>
   <p class="open-source-note">
-    Code, research, and learnings shared freely. No products. No subscriptions. Just the work. →
-    <a href="https://github.com" target="_blank">GitHub (coming soon)</a>
+    Code, research, and learnings shared freely. No products. No subscriptions. Just the work.
   </p>
 
   <div class="waitlist-wrap">
@@ -658,8 +658,7 @@
   </div>
   <p>Open-source algorithmic trading education.<br>Free forever. No products. No subscriptions.</p>
   <div class="footer-links">
-    <a href="https://github.com" target="_blank">GitHub</a>
-    <a href="mailto:hello@pynapse.org">Contact</a>
+    <a href="mailto:pynapse314@gmail.com">Contact</a>
   </div>
   <p style="margin-top:8px">© 2026 Pynapse · pynapse.org · MIT License</p>
 </footer>
@@ -673,12 +672,15 @@
       setTimeout(() => input.style.color = '', 1000);
       return;
     }
+    // Open email client with pre-filled subscribe message
+    const subject = encodeURIComponent('Subscribe me to Pynapse updates');
+    const body = encodeURIComponent(`Hi,\n\nPlease add me to the Pynapse mailing list.\n\nMy email: ${email}`);
+    window.location.href = `mailto:pynapse314@gmail.com?subject=${subject}&body=${body}`;
     document.getElementById('waitlistForm').style.display = 'none';
     document.querySelector('.waitlist-fine').style.display = 'none';
     document.querySelector('.waitlist-label').style.display = 'none';
     const msg = document.getElementById('successMsg');
     msg.style.display = 'block';
-    console.log('Subscriber:', email);
   }
 
   document.getElementById('emailInput').addEventListener('keydown', function(e) {
