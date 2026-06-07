@@ -515,6 +515,19 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+  .consent-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.68rem;
+    color: var(--muted);
+    cursor: pointer;
+    margin-bottom: 8px;
+    line-height: 1.6;
+    transition: color 0.2s;
+  }
+  .consent-label input { margin-top: 2px; accent-color: var(--green); flex-shrink: 0; }
+
   @media (max-width: 600px) {
     nav { padding: 16px 20px; }
     .waitlist { flex-direction: column; }
@@ -582,7 +595,8 @@
       <input type="email" id="emailInput" placeholder="your@email.com" />
       <button onclick="handleJoin()">Follow Along</button>
     </div>
-    <p class="waitlist-fine">Free. No spam. Unsubscribe anytime.</p>
+    <label class="consent-label"><input type="checkbox" id="consentCheck" /> <span>I agree to receive email updates from Pynapse. Unsubscribe anytime.</span></label>
+    <p class="waitlist-fine">Free. No spam. See <a href="https://www.beehiiv.com/privacy" target="_blank" style="color:var(--accent);text-decoration:none">Beehiiv Privacy Policy</a>.</p>
     <p class="success-msg" id="successMsg">✓ You're in. We'll notify you when new content is published.</p>
   </div>
 </section>
@@ -673,6 +687,12 @@
       setTimeout(() => input.style.color = "", 1000);
       return;
     }
+    const consent = document.getElementById("consentCheck");
+    if (!consent.checked) {
+      consent.parentElement.style.color = "#ff4466";
+      setTimeout(() => consent.parentElement.style.color = "", 1500);
+      return;
+    }
     btn.textContent = "Subscribing...";
     btn.disabled = true;
     try {
@@ -682,7 +702,7 @@
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer F2OWmTGTroKOHzUiqq5VCzjmJNbrxSKY34wqE8aNqze1JuYGvDyR6sjlWEwNFq7d"
+            "Authorization": "Bearer cUNEnOe9UFSJgtnETtNoTIxkgge1GrorVEsdWeWxyEGffkqusUFh9Y37ajTVA5E8"
           },
           body: JSON.stringify({ email: email, reactivate_existing: true, send_welcome_email: true })
         }
